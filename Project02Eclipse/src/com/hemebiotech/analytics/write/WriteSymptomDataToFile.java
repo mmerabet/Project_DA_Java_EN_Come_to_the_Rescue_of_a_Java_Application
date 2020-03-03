@@ -3,7 +3,7 @@ package com.hemebiotech.analytics.write;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class WriteSymptomDataToFile {
+public class WriteSymptomDataToFile implements IWriteSymptomDataToFile {
 
     private final FileWriter writer;
 
@@ -11,11 +11,13 @@ public class WriteSymptomDataToFile {
         this.writer = new FileWriter(targetFile);
     }
 
-    public void write(String symptom,Integer count) throws IOException {
+    @Override
+	public void write(String symptom,Integer count) throws IOException {
         writer.write(symptom+"="+count+"\n");
     }
 
-    public void close() throws IOException {
+    @Override
+	public void close() throws IOException {
         writer.close();
     }
 

@@ -4,8 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CountSymptom {
-    public Map<String, Integer> count(List<String> symptoms){
+public class CountSymptom implements ICountSymptom {
+    @Override
+	public Map<String, Integer> count(List<String> symptoms){
         Map<String, Integer>  symptomsCounter = new HashMap<>();
 
         for (String symptom : symptoms){
