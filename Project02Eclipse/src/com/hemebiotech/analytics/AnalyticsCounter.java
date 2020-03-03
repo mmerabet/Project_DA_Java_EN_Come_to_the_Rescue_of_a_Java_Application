@@ -6,6 +6,7 @@ import java.util.*;
 import com.hemebiotech.analytics.count.CountSymptom;
 import com.hemebiotech.analytics.read.ReadSymptomDataFromFile;
 import com.hemebiotech.analytics.sort.SortSymptomByName;
+import com.hemebiotech.analytics.write.WriteSymptomDataToFile;
 
 public class AnalyticsCounter {
     //1ere étape: On déclare une HashMap clé/valeur <> symptoms/occurences
@@ -26,9 +27,9 @@ public class AnalyticsCounter {
         List<String> symptoms = sorter.sort(symptomsCounter.keySet());
         
         //5eme étape: On écrit le fichier result.out
-        FileWriter writer = new FileWriter ("result.out");
+        WriteSymptomDataToFile writer = new WriteSymptomDataToFile ("result.out");
         for (String symptom: symptoms){
-            writer.write(symptom+"="+symptomsCounter.get(symptom)+"\n");
+            writer.write(symptom, symptomsCounter.get(symptom));
         }
         writer.close();
     }
